@@ -102,6 +102,21 @@
 }
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   FOLDING MEASUREMENTS   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\@foldFirst{105mm}
+\def\@foldSecond{210mm}
+
+\newcommand{\foldFirst}[1]{
+	\def\@foldFirst{#1}
+}
+
+\newcommand{\foldSecond}[1]{
+	\def\@foldSecond{#1}
+}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   DOCUMENT PADDING & INDENTS  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -142,5 +157,14 @@
 \renewcommand{\maketitle}{
 	\begin{tikzpicture}[remember picture, overlay]
 		\node (sender) [anchor=north west, inner sep=0, outer sep=0, text width=\@windowWidth, minimum height=\@windowHeight] at ($(current page.north west) + (\@windowOffsetSide, -\@windowOffsetTop)$) {\footnotesize\@senderAddressOneline~\\[\baselineskip]\normalsize\@receiverAddressMultiline};
+		\node (foldAA) at ($(current page.north west) + (5mm, -105mm)$) {};
+		\node (foldAB) at ($(current page.north west) + (10mm, -105mm)$) {};
+		\node (foldBA) at ($(current page.north west) + (5mm, -210mm)$) {};
+		\node (foldBB) at ($(current page.north west) + (10mm, -210mm)$) {};
+		\node (centerA) at ($(current page.west) + (5mm, 0)$) {};
+		\node (centerB) at ($(current page.west) + (10mm, 0)$) {};
+		\draw[-] (foldAA) -- (foldAB);
+		\draw[-] (foldBA) -- (foldBB);
+		\draw[-] (centerA) -- (centerB);
 	\end{tikzpicture}
 }
