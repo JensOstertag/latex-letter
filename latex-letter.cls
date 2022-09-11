@@ -141,6 +141,6 @@
 %%%%%%%%%%%%%
 \renewcommand{\maketitle}{
 	\begin{tikzpicture}[remember picture, overlay]
-		\node (sender) [anchor=north west, inner sep=0, outer sep=0, text width=\@windowWidth, rectangle, draw=black, minimum height=\@windowHeight] at ($(current page.north west) + (\@windowOffsetSide, -\@windowOffsetTop)$) {\footnotesize\@senderAddressOneline~\\[\baselineskip]\normalsize\@receiverAddressMultiline};
+		\node (sender) [anchor=north west, inner sep=0, outer sep=0, text width=\@windowWidth, minimum height=\@windowHeight] at ($(current page.north west) + (\@windowOffsetSide, -\@windowOffsetTop)$) {\footnotesize\@senderAddressOneline~\\[\baselineskip]\normalsize\@receiverAddressMultiline};
 	\end{tikzpicture}
 }
