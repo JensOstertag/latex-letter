@@ -102,10 +102,12 @@
 }
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%
-%   DOCUMENT PADDING   %
-%%%%%%%%%%%%%%%%%%%%%%%%
-\RequirePackage[margin=1in]{geometry}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   DOCUMENT PADDING & INDENTS  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage[margin=\@windowOffsetSide]{geometry}
+\setlength\parindent{0pt}
+\setlength\parskip{\baselineskip}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
@@ -120,47 +122,23 @@
 \renewcommand{\familydefault}{\sfdefault}
 
 
-%%%%%%%%%%%%%%%%%%
-%   HYPERLINKS   %
-%%%%%%%%%%%%%%%%%%
-\RequirePackage{hyperref}
-\hypersetup{
-	colorlinks,
-	citecolor=black,
-	filecolor=black,
-	linkcolor=black,
-	urlcolor=facultyColor
-}
-
-
 %%%%%%%%%%%%
 %   TikZ   %
 %%%%%%%%%%%%
 \RequirePackage{tikz}
 \usetikzlibrary{calc}
 \usetikzlibrary{positioning}
-\usetikzlibrary{fit}
+
+
+%%%%%%%%%%%%%%%%%%%%%%
+%   PAGE NUMBERING   %
+%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{gobble}
 
 
 %%%%%%%%%%%%%
 %   TITLE   %
 %%%%%%%%%%%%%
-\def\@headerSpacing{1.5in}
-\def\@titlePageStyle{default}
-
-\newcommand{\headerspacing}[1]{
-	\def\@headerSpacing{#1}
-}
-
-\newcommand{\titlepagestyle}[1]{
-	\def\@titlePageStyle{#1}
-	
-	\ifthenelse{\equal{\@titlePageStyle}{clear}}{
-		{\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{default-pagestyle}}}}
-		{}
-	}
-}
-
 \renewcommand{\maketitle}{
 	\begin{tikzpicture}[remember picture, overlay]
 		\node (sender) [anchor=north west, inner sep=0, outer sep=0, text width=\@windowWidth, rectangle, draw=black, minimum height=\@windowHeight] at ($(current page.north west) + (\@windowOffsetSide, -\@windowOffsetTop)$) {\footnotesize\@senderAddressOneline~\\[\baselineskip]\normalsize\@receiverAddressMultiline};
