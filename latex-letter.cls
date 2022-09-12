@@ -117,6 +117,16 @@
 }
 
 
+%%%%%%%%%%%%%%%%%%%
+%   TEXT OFFSET   %
+%%%%%%%%%%%%%%%%%%%
+\def\@textOffsetTop{65mm}
+
+\newcommand{\textOffsetTop}[1]{
+	\def\@textOffsetTop{#1}
+}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   DOCUMENT PADDING & INDENTS  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -167,4 +177,11 @@
 		\draw[-] (foldBA) -- (foldBB);
 		\draw[-] (centerA) -- (centerB);
 	\end{tikzpicture}
+	\vspace{\@textOffsetTop}
+	\begin{flushright}
+		\@senderPlace, am \@documentDate
+	\end{flushright}
+	~\\
+	\textbf{\@documentTitle}
+	\\[\baselineskip]
 }
