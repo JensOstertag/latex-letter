@@ -155,10 +155,28 @@
 \usetikzlibrary{positioning}
 
 
-%%%%%%%%%%%%%%%%%%%%%%
-%   PAGE NUMBERING   %
-%%%%%%%%%%%%%%%%%%%%%%
-\pagenumbering{gobble}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   MARKS FOR FOLDING AND HOLE PUNCHING   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{scrlayer-scrpage}
+\newpairofpagestyles{default-pagestyle}{
+	\clearpairofpagestyles
+	\renewcommand*{\headfont}{\normalfont}
+	\chead{
+		\begin{tikzpicture}[remember picture, overlay]
+			\node (foldAA) at ($(current page.north west) + (5mm, -105mm)$) {};
+			\node (foldAB) at ($(current page.north west) + (10mm, -105mm)$) {};
+			\node (foldBA) at ($(current page.north west) + (5mm, -210mm)$) {};
+			\node (foldBB) at ($(current page.north west) + (10mm, -210mm)$) {};
+			\node (centerA) at ($(current page.west) + (5mm, 0)$) {};
+			\node (centerB) at ($(current page.west) + (10mm, 0)$) {};
+			\draw[-] (foldAA) -- (foldAB);
+			\draw[-] (foldBA) -- (foldBB);
+			\draw[-] (centerA) -- (centerB);
+		\end{tikzpicture}
+	}
+}
+\AtBeginDocument{\pagestyle{default-pagestyle}}
 
 
 %%%%%%%%%%%%%
@@ -167,15 +185,6 @@
 \renewcommand{\maketitle}{
 	\begin{tikzpicture}[remember picture, overlay]
 		\node (sender) [anchor=north west, inner sep=0, outer sep=0, text width=\@windowWidth, minimum height=\@windowHeight] at ($(current page.north west) + (\@windowOffsetSide, -\@windowOffsetTop)$) {\footnotesize\@senderAddressOneline~\\[\baselineskip]\normalsize\@receiverAddressMultiline};
-		\node (foldAA) at ($(current page.north west) + (5mm, -105mm)$) {};
-		\node (foldAB) at ($(current page.north west) + (10mm, -105mm)$) {};
-		\node (foldBA) at ($(current page.north west) + (5mm, -210mm)$) {};
-		\node (foldBB) at ($(current page.north west) + (10mm, -210mm)$) {};
-		\node (centerA) at ($(current page.west) + (5mm, 0)$) {};
-		\node (centerB) at ($(current page.west) + (10mm, 0)$) {};
-		\draw[-] (foldAA) -- (foldAB);
-		\draw[-] (foldBA) -- (foldBB);
-		\draw[-] (centerA) -- (centerB);
 	\end{tikzpicture}
 	\vspace{\@textOffsetTop}
 	\begin{flushright}
