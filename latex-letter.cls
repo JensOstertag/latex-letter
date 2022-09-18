@@ -164,10 +164,10 @@
 	\renewcommand*{\headfont}{\normalfont}
 	\chead{
 		\begin{tikzpicture}[remember picture, overlay]
-			\node (foldAA) at ($(current page.north west) + (5mm, -105mm)$) {};
-			\node (foldAB) at ($(current page.north west) + (10mm, -105mm)$) {};
-			\node (foldBA) at ($(current page.north west) + (5mm, -210mm)$) {};
-			\node (foldBB) at ($(current page.north west) + (10mm, -210mm)$) {};
+			\node (foldAA) at ($(current page.north west) + (5mm, - \@foldFirst)$) {};
+			\node (foldAB) at ($(current page.north west) + (10mm, - \@foldFirst)$) {};
+			\node (foldBA) at ($(current page.north west) + (5mm, - \@foldSecond)$) {};
+			\node (foldBB) at ($(current page.north west) + (10mm, - \@foldSecond)$) {};
 			\node (centerA) at ($(current page.west) + (5mm, 0)$) {};
 			\node (centerB) at ($(current page.west) + (10mm, 0)$) {};
 			\draw[-] (foldAA) -- (foldAB);
