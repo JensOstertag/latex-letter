@@ -179,6 +179,12 @@
 \AtBeginDocument{\pagestyle{default-pagestyle}}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   German Date Format   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage[ngerman]{babel}
+
+
 %%%%%%%%%%%%%
 %   TITLE   %
 %%%%%%%%%%%%%
@@ -193,4 +199,25 @@
 	~\\
 	\textbf{\@documentTitle}
 	\\[\baselineskip]
+}
+
+
+%%%%%%%%%%%%%%%%%%%
+%   ATTACHMENTS   %
+%%%%%%%%%%%%%%%%%%%
+\def\@attachments{}
+\newcommand{\attachment}[1]{
+	\edef\@attachments{\unexpanded\expandafter{\@attachments}\\#1}
+}
+\newcommand{\makeattachments}{
+	\vspace{\fill}
+	\textbf{Anhang}
+	\@attachments
+}
+\AtEndDocument{
+	\ifthenelse{\equal{\@attachments}{}}
+	{}
+	{
+		\makeattachments
+	}
 }
