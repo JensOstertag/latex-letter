@@ -25,7 +25,7 @@ Project Folder
 For a detailled Instruction on how to set up your Document, please take a Look at the Documentation.
 There is a bare Minimum Script you can copy:
 
-```
+```LaTeX
 \documentclass[a4paper]{latex-letter}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -128,19 +128,19 @@ Next, let's have a Look at the Code you have to write. There is an example Docum
 
 You have to start by defining a Documentclass. This should be, of course, _latex-letter_, so you can select it with
 
-```
+```LaTeX
 \documentclass{latex-letter}
 ```
 
 You could also add Class Options, e.g. to change the Size of the Page:
 
-```
+```LaTeX
 \documentclass[a4paper]{latex-letter}
 ```
 
 The next Task will be to set up the Documents Metadata: The Subject and the Date. Use the following Commands to do that.
 
-```
+```LaTeX
 \documentTitle{Subject}
 \documentDate{Date}
 ```
@@ -149,7 +149,7 @@ To use the current Date as the Date in the Document, replace `Date` with `\date`
 
 Next, you have to specify Information of the Sender and the Receiver:
 
-```
+```LaTeX
 \senderName{The Sender's Name}
 \senderAddress{Street and House Number}
 \senderAddress{Address Supplement}
@@ -168,7 +168,7 @@ The Commands `senderAddress` and `receiverAddress` can be called multiple Times.
 
 Optionally, you can specify Attachments that come with this Letter. They will then be listed at the Bottom of the last Page. Use
 
-```
+```LaTeX
 \attachment{Attachment 1}
 \attachment{Attachment 2}
 ```
@@ -281,7 +281,7 @@ a ≙ `textOffsetTop`
 
 Now, you can add Contents to your Document inside
 
-```
+```LaTeX
 \begin{document}
     % Your Content Here
 \end{document}
@@ -289,6 +289,6 @@ Now, you can add Contents to your Document inside
 
 You may want to start by creating the Letter Head. Add it by using the Command
 
-```
+```LaTeX
 \maketitle
 ```
